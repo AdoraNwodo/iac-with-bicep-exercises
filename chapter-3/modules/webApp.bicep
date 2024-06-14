@@ -38,7 +38,4 @@ resource appServiceApp 'Microsoft.Web/sites@2021-01-15' = {
   identity: {
     type: identityType
   }
-  dependsOn: [
-    appServicePlan
-  ]
 }
