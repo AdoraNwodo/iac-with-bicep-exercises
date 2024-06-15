@@ -19,12 +19,11 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - name: 'Whatif: Development'
-      uses: azure/arm-deploy@v1
-      with:
-        resourceGroupName: 'dev-application-rg'
-        template: ./repo/chapter-9/app.bicep
-        parameters: ./repo/chapter-9/parameters-dev.json
-        deploymentMode: what-if
+      run: |
+        az deployment group what-if \
+          --resource-group dev-application-rg \
+          --template-file ./repo/chapter-9/app.bicep \
+          --parameters ./repo/chapter-9/parameters-dev.json
     - name: 'Deploy: Development'
       uses: azure/arm-deploy@v1
       with:
@@ -46,12 +45,11 @@ jobs:
         tenant-id: ${{ secrets.PRODUCTION_AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.PRODUCTION_AZURE_SUBSCRIPTION_ID }}
     - name: 'Whatif: Production'
-      uses: azure/arm-deploy@v1
-      with:
-        resourceGroupName: 'production-application-rg'
-        template: ./repo/chapter-9/app.bicep
-        parameters: ./repo/chapter-9/parameters-production.json
-        deploymentMode: what-if
+      run: |
+        az deployment group what-if \
+          --resource-group production-application-rg \
+          --template-file ./repo/chapter-9/app.bicep \
+          --parameters ./repo/chapter-9/parameters-production.json
     - name: 'Deploy: Production'
       uses: azure/arm-deploy@v1
       with:
