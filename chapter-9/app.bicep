@@ -80,7 +80,7 @@ resource cosmosDb 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2021-06-15
   name: '${env}-tutorial-db'
   properties:{
     resource:{
-      id: 'test-tutorial-db'
+      id: '${env}-tutorial-db'
     }
   }
 }
