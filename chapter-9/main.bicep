@@ -10,25 +10,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   kind: 'StorageV2'
 }
 
-// Key Vault
-resource keyVault 'Microsoft.KeyVault/vaults@2019-09-01' = {
-  name: 'test-tutorial-kv'
-  location: location
-  properties: {
-    sku: {
-      family: 'A'
-      name: 'standard'
-    }
-    tenantId: 'add-your-tenant-id-here'
-    enabledForDeployment: false
-    enabledForDiskEncryption: false
-    enabledForTemplateDeployment: false
-    enableSoftDelete: true
-    softDeleteRetentionInDays: 90
-    enableRbacAuthorization: true
-  }
-}
-
 // App Service Plan
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: 'test-tutorial-app-plan'
